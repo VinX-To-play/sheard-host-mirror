@@ -1,5 +1,4 @@
 {
-    discription = "flake used for the sheard Host file sharing";
 
     inputs = {};
 
