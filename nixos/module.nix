@@ -9,7 +9,7 @@ in {
   options.services.sheardHosts = {
     enable = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
       description = "Enable sheardHosts module.";
     };
   };
@@ -22,7 +22,14 @@ in {
       "slave.int"
       "ca.slave.int"
     ];
-    
+    "100.64.0.17" = [
+      "gitea.yggdrasil.com"
+      "qdrant.yggdrasil.com"
+      "firefly.yggdrasil.com"
+      "importer.yggdrasil.com"
+      "actual.yggdrasil.com"
+      "nextcloud.yggdrasil.com"
+    ]; 
     };
   };
 }
