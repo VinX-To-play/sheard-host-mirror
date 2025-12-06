@@ -2,10 +2,9 @@
 
     inputs = {};
 
-    outputs = {self, ... }:
+    outputs = {self, nixpkgs, ... }:
      let
-       nixosModule = import ./nixos/module.nix;
      in {
-       nixosModule.sheardHosts = nixosModule;
+       nixosModule.sheardHosts = import ./nixos/module.nix;
     };
 }
