@@ -6,6 +6,6 @@
      let
        nixosModule = import ./nixos/module.nix;
      in {
-       nixosModule.sheardHosts = nixosModule;
+       nixosModules.sheardHosts = nixosModule;
     };
 }
