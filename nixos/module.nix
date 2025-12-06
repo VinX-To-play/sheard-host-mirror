@@ -4,14 +4,6 @@ with lib;
 
 let
   cfg = config.services.sheardHosts;  # consistent name
-  hosts = {
-    "100.64.0.11" = [
-      "komga.slave.int"
-      "vaultwarden.slave.int"
-      "slave.int"
-      "ca.slave.int"
-    ];
-  };
 
 in {
   options.services.sheardHosts = {
@@ -23,6 +15,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    networking.extraHosts = hosts;
+    networking.extraHosts = {
+    "100.64.0.11" = [
+      "komga.slave.int"
+      "vaultwarden.slave.int"
+      "slave.int"
+      "ca.slave.int"
+    ];
+    
+    };
   };
 }
