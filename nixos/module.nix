@@ -37,7 +37,7 @@ in {
     ];
     "100.64.0.14" = [
       "ancient.portal"
-      ]
+    ];
   };
 
   security.pki.certificates = lib.mkIf cfg.enableCerts [
