@@ -7,15 +7,19 @@ let
 
 in {
   options.services.sheardHosts = {
-    enable = mkOption {
+    enableHost = mkOption {
       type = types.bool;
       default = true;
-      description = "Enable sheardHosts module.";
+      description = "enables Host module.";
+    };
+    enableCerts = mkOption {
+      type = types.bool;
+      default = true;
+      description = "enable CA certs";
     };
   };
 
-  config = mkIf cfg.enable {
-    networking.hosts = {
+    networking.hosts = lib.mkIf cfg.enableHost {
     "100.64.0.11" = [
       "komga.slave.int"
       "vaultwarden.slave.int"
@@ -29,7 +33,10 @@ in {
       "importer.yggdrasil.com"
       "actual.yggdrasil.com"
       "nextcloud.yggdrasil.com"
-    ]; 
-    };
+    ];
   };
+
+  security.pki.certificates = lib.mkIf cfg.enableCerts [
+    (builtins.readFile ../cert/root_ca.crt)
+  ];
 }
