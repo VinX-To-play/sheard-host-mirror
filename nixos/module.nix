@@ -36,7 +36,7 @@ in {
       "nextcloud.yggdrasil.com"
     ];
     "100.64.0.14" = [
-      "ancient.portal"
+      "portal.ancient.net"
     ];
   };
 
