@@ -1,31 +1,30 @@
-{ config, lib, ...}:
-  with lib;
-  let
-    cfg = config.services.hostManager;
-  in {
-  options.services.hostManager = {
+{ config, lib, ... }:
+
+with lib;
+
+let
+  cfg = config.services.sheardHosts;  # consistent name
+in {
+  options.services.sheardHosts = {
     enable = mkOption {
       type = types.bool;
       default = false;
+      description = "Enable sheardHosts module.";
     };
 
-    config = mkIf cfg.enable {
-      networking.host = {
-        "100.64.0.17" = [
-          "gitea.yggdrasil.com"
-          "qdrant.yggdrasil.com"
-          "firefly.yggdrasil.com"
-          "importer.yggdrasil.com"
-          "actual.yggdrasil.com"
-          "nextcloud.yggdrasil.com"
-        ];
-        "100.64.0.11" = [
-          "komga.slave.int"
-          "vaultwarden.slave.int"
-          "slave.int"
-          "ca.slave.int"
-        ];
-      };
+    extraHosts = mkOption {
+      type = types.attrsOf (types.listOf types.str);
+      default = { };
+      description = ''
+        Map of IP -> list of hostnames to add to /etc/hosts.
+        Example: { "10.0.0.5" = [ "myhost" "myhost.local" ]; }
+      '';
     };
+  };
+
+  config = mkIf cfg.enable {
+    networking.extraHosts = lib.concatMapAttrs (ip: names:
+      builtins.concatStringsSep "\n" (map (n: "${ip} ${n}") names)
+    ) cfg.extraHosts;
   };
 }
