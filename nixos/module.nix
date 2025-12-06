@@ -15,7 +15,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    networking.extraHosts = {
+    networking.hosts = {
     "100.64.0.11" = [
       "komga.slave.int"
       "vaultwarden.slave.int"
