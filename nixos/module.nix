@@ -35,6 +35,9 @@ in {
       "actual.yggdrasil.com"
       "nextcloud.yggdrasil.com"
     ];
+    "100.64.0.14" = [
+      "ancient.portal"
+      ]
   };
 
   security.pki.certificates = lib.mkIf cfg.enableCerts [
