@@ -19,6 +19,7 @@ in {
     };
   };
 
+  config = {
     networking.hosts = lib.mkIf cfg.enableHost {
     "100.64.0.11" = [
       "komga.slave.int"
@@ -39,4 +40,5 @@ in {
   security.pki.certificates = lib.mkIf cfg.enableCerts [
     (builtins.readFile ../cert/root_ca.crt)
   ];
+  };
 }
