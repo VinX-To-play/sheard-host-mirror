@@ -21,7 +21,8 @@ outputs = inputs@{sheard-host}:
 ```
 
 ## Options
-can be disabled by:
+Hosts and CA certs can be disabled by:
 ```nix
-services.sheardHosts.enable = false;
+services.sheardHosts.enableHosts = false;
+services.sheardHosts.enableCerts = false;
 ```
