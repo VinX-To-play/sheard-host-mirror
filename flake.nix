@@ -5,6 +5,6 @@
     outputs = {self, nixpkgs, ... }:
      let
      in {
-       nixosModule.sheardHosts = import ./nixos/module.nix;
+       nixosModules.sheardHosts = import ./nixos/module.nix;
     };
 }
