@@ -26,6 +26,7 @@ in {
       "vaultwarden.slave.int"
       "slave.int"
       "ca.slave.int"
+      "navidrome.slave.int"
     ];
     "100.64.0.17" = [
       "gitea.yggdrasil.com"
