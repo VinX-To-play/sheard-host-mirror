@@ -27,7 +27,7 @@ in {
       "slave.int"
       "ca.slave.int"
       "navidrome.slave.int"
-      "lindarr.slave.int"
+      "lidarr.slave.int"
       "prowlarr.slave.int"
       "torrent.slave.int"
     ];
